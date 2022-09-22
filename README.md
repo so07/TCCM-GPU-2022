@@ -98,12 +98,12 @@ A Makefile is available to facilitate the compilation process.
 
 If you are a C/C++ user compiles with command:
 ```
-make pgi_c
+make c
 ```
 
 Insted Fortran users should use command:
 ```
-make pgi_f90
+make f
 ```
 
 ## **CUDA** exercises
