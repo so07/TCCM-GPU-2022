@@ -41,7 +41,7 @@ Once you have completed the exercise you can request a GPU resource on a **compu
 
 If you want to run on a dedicated GPU, ask the scheduler for GPU resourses using:
 ```
-srun -X -t 10 -N 1 -n 4 --mem=8gb --gres=gpu:1 -p m100_sys_test -q qos_test --pty /usr/bin/bash
+srun -X -t 10 -N 1 -n 4 --mem=8gb --gres=gpu:1 -p m100_sys_test -q qos_test -A tra22_esdmm_0 --pty /usr/bin/bash
 ```
 Within this command you reserve a GPU on a compute node for 10 minutes with 4 CPU cores and 8GB of memory 
 
