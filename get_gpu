@@ -4,9 +4,8 @@
 # or execute it to run get_gpu command
 
 function get_gpu () {
-  local accounting="train_cgpR2019"
   
-  command="srun -X -t 10 -N 1 -n 4 --gres=gpu:kepler:1 -p gll_usr_gpuprod -A ${accounting} -p m100_sys_test -q qos_test --pty /usr/bin/bash"
+  command="srun -X -t 10 -N 1 -n 4 --gres=gpu:kepler:1 -A tra22_esdmm_0 -p m100_sys_test -q qos_test --pty /usr/bin/bash"
 
   echo -e "\n# Waiting to log into a compute node with GPU resources ..."
   echo $command
