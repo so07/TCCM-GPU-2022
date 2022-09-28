@@ -28,7 +28,7 @@ program laplace
   do while ( error .gt. tol .and. iter .lt. iter_max )
     error=0.0_fp_kind
 
-!$acc kernels loop reduction(max: error) 
+!$acc parallel loop reduction(max: error) 
     do j=1,m-2
       do i=1,n-2
         Anew(i,j) = 0.25_fp_kind * ( A(i+1,j  ) + A(i-1,j  ) + &
@@ -36,18 +36,18 @@ program laplace
         error = max( error, abs(Anew(i,j)-A(i,j)) )
       end do
     end do
-!$acc end kernels loop
+!$acc end parallel loop
 
     if(mod(iter,10).eq.0 ) write(*,'(i5,f10.6)'), iter, error
     iter = iter + 1
 
-!$acc kernels loop
+!$acc parallel loop
     do j=1,m-2
       do i=1,n-2
         A(i,j) = Anew(i,j)
       end do
     end do
-!$acc end kernels loop
+!$acc end parallel loop
 
   end do
 
